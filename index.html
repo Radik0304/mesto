@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css" type="text/css">
+  <title>Mesto Russia</title>
+</head>
+<body class="page">
+  <div class="page-container">
+    <header class="header">
+      <img class="header__logo" src="./blocks/header/__logo/logo.png" alt="логотип сайта">
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <div class="profile__avatar"></div>
+
+        <div class="profile__info-container">
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+  
+            <p class="profile__job">Исследователь океана</p>
+          </div>
+  
+          <button class="profile__change">
+            <div class="profile__button_edit"></div>
+          </button>
+        </div>
+                  
+        <button class="profile__add">
+          <img class="profile__button-add" src="./blocks/profile/__button-add/Vector.png" alt="логотип кнопки добавления файла">
+        </button>
+      </section>
+      
+      <section class="elements">
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1088404-unsplash.jpg" alt="Здание в Карачаевске">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Карачаевск</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Гора Эльбрус</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1556355-unsplash.jpg" alt="Заснеженная гора на фоне серого неба">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Домбай</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Гора Эльбрус</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1556355-unsplash.jpg" alt="Заснеженная гора на фоне серого неба">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Домбай</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+
+        <div class="elements__card">
+          <img class="elements__photo" src="./blocks/elements/__photo/kirill-pershin-1088404-unsplash.jpg" alt="Здание в Карачаевске">
+
+          <div class="elements__card-bottom">
+            <p class="elements__name">Карачаево-Черкессия</p>
+
+            <button class="elements__button-like"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img class="footer__logo" src="./blocks/footer/__logo/logo.png" alt="логотип футера сайта">
+    </footer>
+
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <input type="text" class="popup__name" value="Жак-Ив Кусто">
+  
+          <input type="text" class="popup__job" value="Исследователь океана">
+
+          <button type="submit" class="popup__form-save">Сохранить</button>
+        </form>
+      </div>
+      <button class="popup__close" type="submit"></button>  
+  </section>   
+  </div>
+
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

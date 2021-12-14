@@ -1,0 +1,28 @@
+.profile__add {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: black;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  color: #fff;
+}
+
+.profile__add:hover {
+  opacity: .6;
+  transition-duration: .5s;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 982px) {
+  .profile__add {
+    position: relative;
+    width: 282px;
+    height: 50px;
+    margin: 0 auto 36px auto;
+  }
+  
+}

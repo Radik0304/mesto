@@ -1,0 +1,21 @@
+.elements__button-like {
+  background-image: url(../__button-like/Vector.png);
+  background-color: #fff;
+  max-width: 22px;
+  width: 100%;
+  max-height: 19px;
+  border: 0;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+
+.elements__button-like:hover {
+  opacity: .5;
+  transition-duration: .3s;
+  cursor: pointer;
+}
+
+.elements__button-like:active {
+  opacity: 100;
+  background-image: url(../__button-like/like_active.png);
+}

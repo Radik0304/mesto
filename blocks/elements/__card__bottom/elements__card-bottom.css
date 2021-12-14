@@ -1,0 +1,6 @@
+.elements__card-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin: 26px 15px 31px 21px;
+    padding: 0;
+  }

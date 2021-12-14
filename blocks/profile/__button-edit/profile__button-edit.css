@@ -1,0 +1,6 @@
+.profile__button_edit {
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  background-image: url(../__button-edit/Vector.png);
+}

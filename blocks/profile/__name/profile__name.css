@@ -1,0 +1,16 @@
+.profile__name {
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #fff;
+  padding: 0;
+  margin: 22px 0 0 0;
+}
+
+@media screen and (max-width: 1112px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
