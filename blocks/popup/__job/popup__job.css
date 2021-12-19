@@ -1,4 +1,7 @@
 .popup__job {
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-size: 14px;
+  line-height: 17px;
   min-width: 358px;
   max-height: 27px;
   margin: auto;
