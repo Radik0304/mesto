@@ -1,0 +1,18 @@
+.footer__copypaste {
+  color: #545454;
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 67px;
+  margin-bottom: 60px;
+  margin-left: 200px;
+}
+
+@media screen and (max-width: 982px) {
+  .footer__copypaste {
+    margin: 48px 19px 36px 19px;
+    font-size: 14px;
+    line-height: 17px;
+  }  
+}

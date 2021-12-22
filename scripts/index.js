@@ -37,25 +37,23 @@ const popupContainer = popup.querySelector('.popup__container');
 const popupForm = popupContainer.querySelector('.popup__form');
 
 // Находим поля формы в DOM
-const nameInput = popupForm.querySelector('.popup__name');
-const jobInput = popupForm.querySelector('.popup__job');
+const nameInput = popupForm.querySelector('.popup__input_type_name');
+const jobInput = popupForm.querySelector('.popup__input_type_job');
 
 //кнопка сохранить
 const saveForm = popupContainer.querySelector('.popup__form-save');
 
 //находим форму поля странице
 const profileNameForm = document.querySelector('.profile__name');	
-const profileJobForm = document.querySelector('profile__job');
+const profileJobForm = document.querySelector('.profile__job');
 
 //задаем формулу 
 function changeInform(evt) {
 	evt.preventDefault();
 
-  const profileNameForm = document.querySelector('.profile__name');		
-	const profileJobForm = document.querySelector('.profile__job');
-
   profileNameForm.textContent = nameInput.value;
   profileJobForm.textContent = jobInput.value;
+  closePopup;
 }
 
 //сохранение информации из попапа

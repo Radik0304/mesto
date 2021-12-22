@@ -5,15 +5,12 @@
   border-radius: 2px;
   box-sizing: border-box;
   background-color: black;
-  position: absolute;
-  top: 35px;
-  right: 0;
   color: #fff;
+  transition-duration: .5s;
 }
 
 .profile__add:hover {
   opacity: .6;
-  transition-duration: .5s;
   cursor: pointer;
 }
 
@@ -21,8 +18,6 @@
   .profile__add {
     position: relative;
     width: 282px;
-    height: 50px;
-    margin: 0 auto 36px auto;
+    margin: 36px auto 36px auto;
   }
-  
 }

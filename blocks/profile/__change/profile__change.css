@@ -6,11 +6,11 @@
   margin: 37px 0 59px 18px;
   padding: 0;
   background-color: black;
+  transition-duration: .5s;
 }
 
 .profile__change:hover {
   opacity: .6;
-  transition-duration: .5s;
   cursor: pointer;
 }
 

@@ -1,19 +1,21 @@
 .popup__form-save {
   min-width: 358px;
   min-height: 50px;
-  margin: 48px auto 37px auto;
+  margin: 18px auto 37px auto;
   padding: 0;
   background-color: #000;
+  border: none;
   border-radius: 2px;
   font-family: 'inter', 'Times New Roman', Times, serif;
   font-size: 18px;
   line-height: 21.78px;
   color: #fff;
+  transition-duration: .2s;
 }
 
 .popup__form-save:hover {
   opacity: .8;
-  transition-duration: .2s;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
@@ -22,6 +24,6 @@
     min-height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px auto 25px auto;
+    margin: 0 auto 0 auto;
   }
 }

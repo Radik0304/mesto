@@ -1,9 +1,10 @@
-.popup__job {
+.popup__input {
   font-family: 'inter', 'Times New Roman', Times, serif;
   font-size: 14px;
   line-height: 17px;
   min-width: 358px;
   max-height: 27px;
+  padding-bottom: 13px;
   margin: auto;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -11,7 +12,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .popup__job {
+  .popup__input {
     min-width: 238px;
   }
 }

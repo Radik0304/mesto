@@ -5,11 +5,18 @@
   line-height: 22px;
   color: #fff;
   margin-top: 16px;
-  margin-bottom: 25px;
+  margin-bottom: 0;
+  width: 294px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 982px) {
   .profile__job {
-    margin: 14px auto 0 auto;
+    margin: 9px auto 0 auto;
+    width: 189px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

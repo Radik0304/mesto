@@ -3,5 +3,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 30px;
-  margin-top: 54px;
+  margin-top: 44px;
+}
+
+@media screen and (max-width: 982px){
+  .popup__form {
+    margin-top: 75px;
+  }
 }

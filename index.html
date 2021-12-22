@@ -9,27 +9,28 @@
 <body class="page">
   <div class="page-container">
     <header class="header">
-      <img class="header__logo" src="./blocks/header/__logo/logo.png" alt="логотип сайта">
+      <img class="header__logo" src="./blocks/header/__logo/logo.svg" alt="логотип сайта">
     </header>
 
     <main class="content">
       <section class="profile">
-        <div class="profile__avatar"></div>
+        <div class="profile__data">
+          <div class="profile__avatar"></div>
 
-        <div class="profile__info-container">
-          <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-  
-            <p class="profile__job">Исследователь океана</p>
+          <div class="profile__info-container">
+            <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+    
+              <p class="profile__job">Исследователь океана</p>
+            </div>
+
+            <button class="profile__change" type="button">
+              <img class="profile__button-edit" src="./blocks/profile/__button-edit/pencel.svg" alt="карандаш">
+            </button>
           </div>
-  
-          <button class="profile__change">
-            <img class="profile__button-edit" src="./blocks/profile/__button-edit/Vector.png" alt = "значок карандаша">
-          </button>
-        </div>
-                  
-        <button class="profile__add">
-          <img class="profile__button-add" src="./blocks/profile/__button-add/Vector.png" alt="логотип кнопки добавления файла">
+        </div>          
+        <button class="profile__add" type="button">
+          <img class="profile__button-add" src="./blocks/profile/__button-add/Vector.svg" alt="логотип кнопки добавления файла">
         </button>
       </section>
       
@@ -40,7 +41,7 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Карачаевск</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
 
@@ -50,7 +51,7 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Гора Эльбрус</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
 
@@ -60,7 +61,7 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Домбай</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
 
@@ -70,7 +71,7 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Гора Эльбрус</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
 
@@ -80,7 +81,7 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Домбай</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
 
@@ -90,28 +91,31 @@
           <div class="elements__card-bottom">
             <p class="elements__name">Карачаево-Черкессия</p>
 
-            <button class="elements__button-like"></button>
+            <button class="elements__button-like" type="button"></button>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <img class="footer__logo" src="./blocks/footer/__logo/logo.png" alt="логотип футера сайта">
+      <p class="footer__copypaste">&#169 2020 Mesto Russia</p>
     </footer>
 
     <section class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input type="text" class="popup__name" value="Жак-Ив Кусто">
+        <form class="popup__form" name="data__form">
+          <input type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" name="kusto">
   
-          <input type="text" class="popup__job" value="Исследователь океана">
+          <input type="text" class="popup__input popup__input_type_job" value="Исследователь океана" name="discover">
 
           <button type="submit" class="popup__form-save">Сохранить</button>
+
+          <button class="popup__close" type="submit"></button>   
         </form>
+        
       </div>
-      <button class="popup__close" type="submit"></button>  
+ 
   </section>   
   </div>
 
