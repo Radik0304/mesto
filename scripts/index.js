@@ -42,7 +42,7 @@ function changeInform(evt) {
 	evt.preventDefault();
   profileNameForm.textContent = nameInput.value;
   profileJobForm.textContent = jobInput.value;
-  closePopup;
+  closePopup();
 }
 
 //сохранение информации из попапа
