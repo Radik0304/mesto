@@ -73,7 +73,8 @@ const initialCards = [
 const cards = document.querySelector('.elements');
 const cardsTemplate = document.querySelector('.card-template').content;
 const cardBody = cardsTemplate.querySelector('.elements__card');
-const buttonLike = cardsTemplate.querySelector('.elements__button-like');
+const popupPhoto = document.querySelector('.popup-image');
+
 
 
 //перебор массива
@@ -84,15 +85,36 @@ function createCard(element){
   const cardsTemplateClone = cardBody.cloneNode(true);
   cardsTemplateClone.querySelector('.elements__name').textContent = element.name;
   cardsTemplateClone.querySelector('.elements__photo').src = element.link;
-  const buttonDelete = cardsTemplate.querySelector('.elements__button-delete');
-
+  const buttonDelete = cardsTemplateClone.querySelector('.elements__button-delete');
+  const buttonLike = cardsTemplateClone.querySelector('.elements__button-like');
 
   cards.prepend(cardsTemplateClone);
 
+  //удаляем карточку
   buttonDelete.addEventListener('click', ()=>{
     cardsTemplateClone.remove();
   })
+
+  //лайкаем карточку
+  buttonLike.addEventListener('click', ()=>{
+    buttonLike.style.backgroundImage = 'url(../blocks/elements/__button-like/Union.svg)';
+  })
+
+  //открытие и закрытие фото
+  const buttonOpenPhoto = document.querySelector('.elements__photo');
+  const buttonClosePhoto = popupPhoto.querySelector('.popup-image__close');
+  function togglePopupPhoto(){
+    popupPhoto.classList.toggle('popup-image_opened');
+    document.querySelector('.popup-image__photo').src = element.link;
+  }
+
+  function closePopupPhoto () {
+    popupPhoto.classList.remove('popup-image_opened');
+  }
+  buttonOpenPhoto.addEventListener('click', togglePopupPhoto);
+  buttonClosePhoto.addEventListener('click', closePopupPhoto);
 }
+
 
 //переменные для попапа карточек
 const popupCardsButtonOpenForm = document.querySelector('.profile__add');

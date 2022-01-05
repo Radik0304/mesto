@@ -58,3 +58,10 @@
 @import url(../blocks/popup-cards/__input/popup-cards__input.css);
 @import url(../blocks/popup-cards/__title/popup-cards__title.css);
 @import url(../blocks/popup-cards/_opened/popup-cards_opened.css);
+
+/*popup image*/
+@import url(../blocks/popup-image/popup-image.css);
+@import url(../blocks/popup-image/__close/popup-image__close.css);
+@import url(../blocks/popup-image/__container/popup-image__container.css);
+@import url(../blocks/popup-image/__photo/popup-image__photo.css);
+@import url(../blocks/popup-image/_opened/popup-image_opened.css);
