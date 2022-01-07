@@ -109,7 +109,7 @@ buttonPopupClose = popupImage.querySelector('.popup__close');
 
 buttonOpenPhoto.addEventListener('click', ()=>{
   openPopup(popupImage);
-  document.querySelector('.popup-image__photo').src = element.link
+  document.querySelector('.popup__image-photo').src = element.link
 })
 
 
