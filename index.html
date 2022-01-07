@@ -57,41 +57,40 @@
       <p class="footer__copypaste">&#169; 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="data__form">
           <input type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" name="kusto">
   
-          <input type="text" class="popup__input popup__input_type_job" value="Исследователь океана" name="discover">
+          <input type="text" class="popup__input popup__input_type_description" value="Исследователь океана" name="discover">
 
           <button type="submit" class="popup__form-save">Сохранить</button>
 
         </form>
         <button class="popup__close" type="button"></button>  
       </div>
- 
     </section>
 
-    <section class="popup-cards">
-      <div class="popup-cards__container">
-        <h2 class="popup-cards__title">Новое место</h2>
-        <form class="popup-cards__form" name ="data__form">
-          <input type="text" class="popup-cards__input popup-cards__input_type_name"  name="name-place" placeholder="Название">
+    <section class="popup popup_type_cards">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name ="data__form">
+          <input type="text" class="popup__input popup__input_type_name"  name="name-place" placeholder="Название">
   
-          <input type="text" class="popup-cards__input popup-cards__input_type_link"  name="photo-link" placeholder="Ссылка на картинку">
+          <input type="text" class="popup__input popup__input_type_description"  name="photo-link" placeholder="Ссылка на картинку">
 
-          <button type="submit" class="popup-cards__form-save">Создать</button>
+          <button type="submit" class="popup__form-save">Создать</button>
 
         </form>
-        <button class="popup-cards__close" type="button"></button>
+        <button class="popup__close" type="button"></button>
       </div>  
     </section>
 
-    <section class="popup-image">
+    <section class="popup popup_type_image">
       <div class="popup-image__container">
         <img class="popup-image__photo" src = " ">
-        <button class="popup-image__close" type="button"></button>
+        <button class="popup__close" type="button"></button>
       </div>
     </section>
   </div>
