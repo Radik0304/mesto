@@ -1,3 +1,15 @@
+//переменные
+const popupProfile = document.querySelector('.popup_type_profile')
+const popupContainerProfile = popupProfile.querySelector('.popup__container');
+const popupFormProfile = popupContainerProfile.querySelector('.popup__form');
+const nameInput = popupFormProfile.querySelector('.popup__input_type_name');
+const jobInput = popupFormProfile.querySelector('.popup__input_type_description');
+const profileName = document.querySelector('.profile__name');	
+const profileJob = document.querySelector('.profile__job');
+const buttonProfilePopupOpen = document.querySelector('.profile__change')
+
+
+
 //функции открытия и закрытия
 function openPopup(popup){
   popup.classList.add('popup_opened')
@@ -8,20 +20,16 @@ function closePopup (popup){
 }
 
 // Находим форму в DOM
-const popupProfile = document.querySelector('.popup_type_profile')
-const popupContainerProfile = popupProfile.querySelector('.popup__container');
-const popupFormProfile = popupContainerProfile.querySelector('.popup__form');
+
 
 // Находим поля формы в DOM
-const nameInput = popupFormProfile.querySelector('.popup__input_type_name');
-const jobInput = popupFormProfile.querySelector('.popup__input_type_description');
+
 
 //находим форму поля странице
-const profileName = document.querySelector('.profile__name');	
-const profileJob = document.querySelector('.profile__job');
+
 
 //попап профиля
-const buttonProfilePopupOpen = document.querySelector('.profile__change');
+;
 buttonProfilePopupOpen.addEventListener('click', () =>
   openPopup(popupProfile)
 )
@@ -97,15 +105,15 @@ function createCard(element){
 
 //открытие и закрытие фото
   const popupImage = document.querySelector('.popup_type_image');
-  const buttonOpenPhoto = document.querySelector('.elements__photo');
-  const buttonPopupClosePhoto = popupImage.querySelector('.popup__close');
+  const buttonOpenPhoto = cardsTemplateClone.querySelector('.elements__photo');
+  const buttonPopupPhotoClose = popupImage.querySelector('.popup__close');
 
   buttonOpenPhoto.addEventListener('click', ()=>{
     openPopup(popupImage);
     popupImage.querySelector('.popup__image-photo').src = element.link
   })
 
-  buttonPopupClosePhoto.addEventListener('click', ()=>
+  buttonPopupPhotoClose.addEventListener('click', ()=>
   closePopup(popupImage));
 
   return cardsTemplateClone
@@ -124,6 +132,10 @@ const buttonPopupCardsClose = popupCards.querySelector('.popup__close');
 
 popupCardsButtonOpenForm.addEventListener('click', ()=>
   openPopup(popupCards)
+);
+
+buttonPopupCardsClose.addEventListener('click', ()=>
+  closePopup(popupCards)
 );
 
 const popupCardsContainer = popupCards.querySelector('.popup__container');
