@@ -1,5 +1,5 @@
 .elements__button-like {
-  background-image: url(../__button-like/likeDisabled.svg);
+  background-image: url(/src/images/likeDisabled.svg);
   background-color: #fff;
   max-width: 22px;
   width: 100%;
@@ -17,5 +17,5 @@
 
 .elements__button-like:active {
   opacity: 100;
-  background-image: url(../__button-like/Union.svg);
+  background-image: url(/src/images/likeAktive.svg);
 }
