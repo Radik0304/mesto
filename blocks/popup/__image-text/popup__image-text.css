@@ -1,0 +1,10 @@
+.popup__image-text {
+  max-width:291px;
+  max-height: 12px;
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+  margin-top: 10px 
+}
