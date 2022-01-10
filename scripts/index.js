@@ -7,8 +7,7 @@ const jobInput = popupFormProfile.querySelector('.popup__input_type_description'
 const profileName = document.querySelector('.profile__name');	
 const profileJob = document.querySelector('.profile__job');
 const buttonProfilePopupOpen = document.querySelector('.profile__change')
-const popup = document.querySelector('.popup');
-const buttonPopupClosePopupProfile = popup.querySelector('.popup__close')
+const buttonPopupClosePopupProfile = popupProfile.querySelector('.popup__close')
 const cards = document.querySelector('.elements');
 const cardsTemplate = document.querySelector('.card-template').content;
 const cardBody = cardsTemplate.querySelector('.elements__card');
@@ -56,7 +55,7 @@ function openPopup(popup){
   popup.classList.add('popup_opened')
 }
 
-function closePopup (popup){
+function closePopup(popup){
   popup.classList.remove('popup_opened')
 }
 
@@ -80,6 +79,7 @@ function createCard(element){
   const cardsTemplateClone = cardBody.cloneNode(true);
   cardsTemplateClone.querySelector('.elements__name').textContent = element.name;
   cardsTemplateClone.querySelector('.elements__photo').src = element.link;
+  cardsTemplateClone.querySelector('.elements__photo').alt = element.name;
   const buttonDelete = cardsTemplateClone.querySelector('.elements__button-delete');
   const buttonLike = cardsTemplateClone.querySelector('.elements__button-like');
   const buttonOpenPhoto = cardsTemplateClone.querySelector('.elements__photo');
@@ -118,7 +118,7 @@ buttonPopupCardsClose.addEventListener('click', ()=>
 );
 
 buttonPopupPhotoClose.addEventListener('click', ()=>
-closePopup(popupImage));
+  closePopup(popupImage));
 
 buttonPopupClosePopupProfile.addEventListener('click', () =>
   closePopup(popupProfile)

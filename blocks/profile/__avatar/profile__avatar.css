@@ -1,5 +1,5 @@
 .profile__avatar{
-  background-image: url(/src/images/Kusto.jpg);
+  background-image: url(../../../images/Kusto.jpg);
   width: 120px;
   height: 120px;
   background-size: cover;
