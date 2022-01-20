@@ -1,4 +1,5 @@
 //переменные
+const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_profile')
 const popupContainerProfile = popupProfile.querySelector('.popup__container');
 const popupFormProfile = popupContainerProfile.querySelector('.popup__form');
@@ -21,6 +22,7 @@ const placeNameInput = popupCards.querySelector('.popup__input_type_name');
 const placeLinkInput = popupCards.querySelector('.popup__input_type_description');
 const popupImage = document.querySelector('.popup_type_image');
 const buttonPopupPhotoClose = popupImage.querySelector('.popup__close');
+const popupInputs = document.querySelector('.popup__input');
 
 //массив
 const initialCards = [
@@ -52,12 +54,29 @@ const initialCards = [
 
 //функции открытия и закрытия
 function openPopup(popup){
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opened');
+  document.addEventListener('click', closePopupByClickOverlay); 
+  document.addEventListener('keydown', closePopupByEscape);
 }
 
 function closePopup(popup){
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('click', closePopupByClickOverlay); 
+  document.removeEventListener('keydown', closePopupByEscape);
 }
+
+//закрытие по оверлею
+function closePopupByClickOverlay(e) {
+  if (e.target.classList.contains('popup')){
+    closePopup(document.querySelector('.popup_opened'))
+  }
+};
+
+//закрытие по Esc
+function closePopupByEscape(evt) {
+  if(evt.key === 'Escape')
+  closePopup(document.querySelector('.popup_opened'))
+};
 
 //изменение информации
 function changeInformationProfile(evt) {
@@ -97,7 +116,8 @@ function createCard(element){
 //открытие фото
   buttonOpenPhoto.addEventListener('click', ()=>{
     openPopup(popupImage);
-    popupImage.querySelector('.popup__image-photo').src = element.link
+    popupImage.querySelector('.popup__image-photo').src = element.link;
+    popupImage.querySelector('.popup__image-photo').alt = element.name;
     popupImage.querySelector('.popup__image-text').textContent = element.name;
   })
 

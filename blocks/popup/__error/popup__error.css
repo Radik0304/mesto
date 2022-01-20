@@ -1,0 +1,16 @@
+.popup__error {
+  max-width: 358px;
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  margin-top: 5px;
+  margin-left: 36px;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 900px){
+  .popup__error {
+    max-width: 242px; 
+  }
+}
