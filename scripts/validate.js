@@ -58,5 +58,6 @@ function enableValidation (config) {
         toggleButtonState(button, inputs, config)
       })
     })
+      toggleButtonState(button, inputs, config)
   })
 }

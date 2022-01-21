@@ -24,6 +24,8 @@ const popupImage = document.querySelector('.popup_type_image');
 const buttonPopupPhotoClose = popupImage.querySelector('.popup__close');
 const popupInputs = document.querySelector('.popup__input');
 
+const popupFormSave = popupCardsForm. querySelector('.popup__form-save');
+
 //массив
 const initialCards = [
   {
@@ -57,6 +59,8 @@ function openPopup(popup){
   popup.classList.add('popup_opened');
   document.addEventListener('click', closePopupByClickOverlay); 
   document.addEventListener('keydown', closePopupByEscape);
+  popupFormSave.setAttribute('disabled', true);
+  popupFormSave.classList.add('popup__form-save_disabled');
 }
 
 function closePopup(popup){

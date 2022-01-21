@@ -3,6 +3,8 @@
   color: #000;
   background-color: white;
   opacity: 0.5;
-  
-  
 }
+
+.popup__form-save_disabled:hover {
+  cursor: default;
+  }
