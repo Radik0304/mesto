@@ -57,9 +57,17 @@ const initialCards = [
   }
 ];
 
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__form-save',
+  inactiveButtonClass: 'popup__form-save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
 
-const changeInform= new FormValidator(settings, '.popup_type_profile');
-const addCardForm = new FormValidator(settings, '.popup_type_cards');
+const changeInform= new FormValidator(settings, popupProfile);
+const addCardForm = new FormValidator(settings, popupCards);
 
 addCardForm.enableValidation();
 changeInform.enableValidation();
@@ -101,12 +109,16 @@ function changeInformationProfile(evt) {
   closePopup(popupProfile);
 }
 
-initialCards.forEach((item) => { //создаем карточки
+//
+const renderCard = (item) => {
   const card = new Card(item.name, item.link)
   const cardsElement = card._generateCard();
 
   document.querySelector('.elements').append(cardsElement);
-});
+}
+
+//перебираем массив и создем карточки
+initialCards.forEach(renderCard);
 
 //слушатели
 buttonProfilePopupOpen.addEventListener('click', () =>

@@ -61,10 +61,10 @@
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="data__form" novalidate>
-          <input type="text" id="edit-name" class="popup__input popup__input_type_name" placeholder="Имя" value="Жак-Ив Кусто" name="kusto" minlength="2" maxlength="40" required>
+          <input type="text" id="edit-name" autocomplete="off" class="popup__input popup__input_type_name" placeholder="Имя" value="Жак-Ив Кусто" name="kusto" minlength="2" maxlength="40" required>
           <span id="edit-name-error" class="popup__error"></span>
 
-          <input type="text" id="edit-job" class="popup__input popup__input_type_description" placeholder="Профессинальная деятельность" value="Исследователь океана" name="discover" minlength="2" maxlength="200" required>
+          <input type="text" id="edit-job" autocomplete="off" class="popup__input popup__input_type_description" placeholder="Профессинальная деятельность" value="Исследователь океана" name="discover" minlength="2" maxlength="200" required>
           <span class="popup__error" id="edit-job-error"></span>
 
           <button type="submit" class="popup__form-save">Сохранить</button>
@@ -78,10 +78,10 @@
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form" name ="data__form" novalidate>
-          <input id='add-title' type="text" class="popup__input popup__input_type_name"  name="name-place" placeholder="Название" minlength="2" maxlength="30" required>
+          <input id='add-title' type="text" autocomplete="off" class="popup__input popup__input_type_name"  name="name-place" placeholder="Название" minlength="2" maxlength="30" required>
           <span id='add-title-error' class="popup__error"></span>
 
-          <input id='add-url' type="url" class="popup__input popup__input_type_description"  name="photo-link" placeholder="Ссылка на картинку" required>
+          <input id='add-url' type="url" autocomplete="off" class="popup__input popup__input_type_description"  name="photo-link" placeholder="Ссылка на картинку" required>
           <span id='add-url-error' class="popup__error"></span>
 
           <button type="submit" class="popup__form-save">Создать</button>
