@@ -78,8 +78,8 @@ export function openPopup(popup){
   popup.classList.add('popup_opened');
   document.addEventListener('click', closePopupByClickOverlay); 
   document.addEventListener('keydown', closePopupByEscape);
-  popupFormSave.setAttribute('disabled', true);
-  popupFormSave.classList.add('popup__form-save_disabled');
+  /*popupFormSave.setAttribute('disabled', true);
+  popupFormSave.classList.add('popup__form-save_disabled');*/
 }
 
 function closePopup(popup){
@@ -109,9 +109,9 @@ function changeInformationProfile(evt) {
   closePopup(popupProfile);
 }
 
-//
-const renderCard = (item) => {
-  const card = new Card(item.name, item.link)
+//формируем тело карточки
+const renderCard = (data) => {
+  const card = new Card(data)
   const cardsElement = card._generateCard();
 
   document.querySelector('.elements').append(cardsElement);
@@ -125,9 +125,10 @@ buttonProfilePopupOpen.addEventListener('click', () =>
   openPopup(popupProfile)
 );
 
-popupCardsButtonOpenForm.addEventListener('click', ()=>
-  openPopup(popupCards)
-);
+popupCardsButtonOpenForm.addEventListener('click', ()=> {
+  addCardForm.resetValidation();
+  openPopup(popupCards);
+});
 
 buttonPopupCardsClose.addEventListener('click', ()=>
   closePopup(popupCards)
