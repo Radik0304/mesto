@@ -1,0 +1,11 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "### Обзор Данный проект создан для отработки полученныз знания по JS и Верстке В работе использован язык разметки **HTML**язык стилей **CSS**, а также язык программирования JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Radik Tarzemanov",
+  "license": "ISC"
+}
