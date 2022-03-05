@@ -19,7 +19,7 @@ class Card{
     return cardsTemplate
   }
 
-  _generateCard() {
+  generateCard() {
     this._card = this._getTemplate();
     this._setEventListeners();
 

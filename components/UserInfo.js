@@ -1,29 +1,20 @@
 class UserInfo {
-  constructor(items) {
-    this._nameInputSelector = items.nameInputSelector;
-    this._aboutInputSelector = items.aboutInputSelector;
+  constructor({nameInputSelector, jobInputSelector}) {
+    this._nameInputSelector = nameInputSelector;
+    this._jobInputSelector = jobInputSelector;
   }
 
   getUserInfo(){ //возращает объект с данными пользователя
-    this._nameInputSelector = document.querySelector('.profile__name');
-    this._aboutInputSelector = document.querySelector('.profile__job');
-
-    this._userInfoValues = {
-      this._nameInputSelector.textContent:  
+    return {
+      name: this._nameInputSelector.textContent,
+      about: this._jobInputSelector.textContent
     }
-
-    
   }
 
-  setUserInfo(){ //принимает новые данные и добавляет их на страницу
-
+  setUserInfo(data){ //принимает новые данные и добавляет их на страницу
+    this._nameInputSelector.textContent = data.name;
+    this._jobInputSelector.textContent = data.about;
+    }
   }
-}
 
-
-// function changeInformationProfile(evt) {
-//   evt.preventDefault();
-//   profileName.textContent = nameInput.value;
-//   profileJob.textContent = jobInput.value;
-//   closePopup(popupProfile);
-// }
+  export default UserInfo

@@ -4,6 +4,7 @@ import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 //переменные
 /*const popup = document.querySelector('.popup');*/
@@ -12,8 +13,8 @@ const popupContainerProfile = popupProfile.querySelector('.popup__container');
 const popupFormProfile = popupContainerProfile.querySelector('.popup__form');
 const nameInput = popupFormProfile.querySelector('.popup__input_type_name');
 const jobInput = popupFormProfile.querySelector('.popup__input_type_description');
-const profileName = document.querySelector('.profile__name');	
-const profileJob = document.querySelector('.profile__job');
+export const profileName = document.querySelector('.profile__name');	
+export const profileJob = document.querySelector('.profile__job');
 const buttonProfilePopupOpen = document.querySelector('.profile__change');
 
 export const buttonPopupClose= document.querySelector('.popup__close');
@@ -121,7 +122,7 @@ const cardsList = new Section({
   renderer: (data) => {
       const card = new Card(data, cardsTemplate, 
         {handleCardClick: () => popupImageOpen.open(data.name, data.link)});
-      const cardsElement = card._generateCard();
+      const cardsElement = card.generateCard();
       cardsList.addItem(cardsElement)
     }
   },
@@ -130,10 +131,14 @@ const cardsList = new Section({
 cardsList.renderItems(); // перебираем массив
 
 
+//данные профиля
+const userInfo = new UserInfo({nameInput, jobInput})
+
 
 //попап добавления карточки
 const popupCardsAdd = new PopupWithForm(popupCards, {
   handleFormSubmit: () => {
+  
 
   }
 });
@@ -142,13 +147,16 @@ const popupCardsAdd = new PopupWithForm(popupCards, {
 //попап изменения информации
 const popupProfileChange = new PopupWithForm(popupProfile, {
   handleFormSubmit: () => {
-    
+    userInfo.setUserInfo(data);
+    popupProfileChange.close()
   }
 })
 
-popupProfileChange.setEventListeners(); //слушатель на попап измнения профиля
+
 
 //слушатели
+popupProfileChange.setEventListeners(); //слушатель на попап изменения профиля
+
 popupImageOpen.setEventListeners(); // ставим слушателей на карточки
 
 popupCardsAdd.setEventListeners(); //ставим слушателей на попап добавления карточек
@@ -157,18 +165,31 @@ popupCardsButtonOpenForm.addEventListener('click', ()=> { //слушатель �
   popupCardsAdd.open()
 });
 
-buttonProfilePopupOpen.addEventListener('click', () => //кнопка открытия попапа профиля
-popupProfileChange.open()
-);
+buttonProfilePopupOpen.addEventListener('click', () => {//кнопка открытия попапа профиля
+popupProfileChange.open();
 
-// popupCardsForm.addEventListener('submit', (evt) => {
+const userData = userInfo.getUserInfo();
+
+profileName.textContent = userData.name;
+profileJob.textContent = userData.about;
+});
+
+// popupCardsAdd.addEventListener('submit', (evt) => {
 //   evt.preventDefault();
 //   renderCard({
 //     name: placeNameInput.value,
 //     link: placeLinkInput.value
 //   }); 
-//   popupCardsForm.reset();
-//   closePopup(popupCards)
+//   popupCardsAdd.reset();
+//   closeP(popupCards)
 // });
 
 // popupFormProfile.addEventListener('submit', changeInformationProfile);
+
+//формируем тело карточки
+// const renderCard = (data) => {
+//   const card = new Card(data)
+//   const cardsElement = card._generateCard();
+
+//   document.querySelector('.elements').append(cardsElement);
+// }
