@@ -31,14 +31,8 @@ _closePopupByClickOverlay = (e) => {
   }
 }
 
-
   //слушатели попапа
   setEventListeners(){
-
     this._popupSelector.querySelector('.popup__close').addEventListener('click', () => {this.close()})
-
-    // this._popupSelector.addEventListeners('click', () => {
-    //   this._closePopupByClickOverlay(e)
-    // })
   }
 }

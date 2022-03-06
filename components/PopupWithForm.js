@@ -10,7 +10,7 @@ class PopupWithForm extends Popup{
     //собираем данные всех полей формы
     _getInputValues(){
       this._inputs = this._formSelector.querySelectorAll('.popup__input');
-          //создаем пустой объект
+    //создаем пустой объект
     this._formValues = {}
 
     //добавляем значения всех полей
@@ -32,8 +32,7 @@ class PopupWithForm extends Popup{
 
       this._formSelector.addEventListener('submit',(evt) => {
         evt.preventDefault();
-        console.log(this._getInputValues())
-        this._handleFormSubmit(this._getInputValues());
+        this._handleFormSubmit(this._getInputValues()); 
         this.close();
       })
     }
