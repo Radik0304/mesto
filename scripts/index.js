@@ -115,15 +115,20 @@ changeInform.enableValidation();
 //   closePopup(popupProfile);
 // }
 
+//создание новой карточки
+function newCardMaker(data, cardsTemplate, cardsList){
+  const newCard = new Card(data, cardsTemplate, 
+    {handleCardClick: () => popupImageOpen.open(data.name, data.link)})
+    const cardsElement = newCard.generateCard();
+    cardsList.addItem(cardsElement)
+}
+
 //формируем карточки
 const popupImageOpen = new PopupWithImage(popupImage);
 const cardsList = new Section({
   items: initialCards,
   renderer: (data) => {
-      const card = new Card(data, cardsTemplate, 
-        {handleCardClick: () => popupImageOpen.open(data.name, data.link)});
-      const cardsElement = card.generateCard();
-      cardsList.addItem(cardsElement)
+      newCardMaker(data, cardsTemplate, cardsList)
     }
   },
   cards);
@@ -131,28 +136,26 @@ const cardsList = new Section({
 cardsList.renderItems(); // перебираем массив
 
 
-//данные профиля
-const userInfo = new UserInfo({nameInput, jobInput})
+
 
 
 //попап добавления карточки
 const popupCardsAdd = new PopupWithForm(popupCards, {
-  handleFormSubmit: () => {
-  
-
+  handleFormSubmit: (data) => {
+    newCardMaker(data, cardsTemplate, cardsList);
   }
 });
 
+//данные профиля
+const userInfo = new UserInfo({nameInputSelector: nameInput, jobInputSelector: jobInput});
 
 //попап изменения информации
 const popupProfileChange = new PopupWithForm(popupProfile, {
-  handleFormSubmit: () => {
-    userInfo.setUserInfo(data);
-    popupProfileChange.close()
+  handleFormSubmit: (data) => {
+    popupProfileChange.close();
+    userInfo.setUserInfo(data.name, data.about);
   }
 })
-
-
 
 //слушатели
 popupProfileChange.setEventListeners(); //слушатель на попап изменения профиля
@@ -166,12 +169,11 @@ popupCardsButtonOpenForm.addEventListener('click', ()=> { //слушатель �
 });
 
 buttonProfilePopupOpen.addEventListener('click', () => {//кнопка открытия попапа профиля
-popupProfileChange.open();
+  popupProfileChange.open();
+   const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.about;
 
-const userData = userInfo.getUserInfo();
-
-profileName.textContent = userData.name;
-profileJob.textContent = userData.about;
 });
 
 // popupCardsAdd.addEventListener('submit', (evt) => {
