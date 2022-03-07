@@ -39,6 +39,7 @@ class Card{
   
     this._buttonLike = this._card.querySelector('.elements__button-like');
     this._buttonDelete = this._card.querySelector('.elements__button-delete');
+    
     this._buttonDelete.addEventListener('click', () => {
       this._deleteCard()
     })

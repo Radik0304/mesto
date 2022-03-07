@@ -19,11 +19,8 @@ export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 const buttonProfilePopupOpen = document.querySelector('.profile__change');
 export const buttonPopupClose= document.querySelector('.popup__close');
-const cards = document.querySelector('.elements');
 const popupCardsButtonOpenForm = document.querySelector('.profile__add');
 const popupCards = document.querySelector('.popup_type_cards');
-const placeNameInput = popupCards.querySelector('.popup__input_type_name');
-const placeLinkInput = popupCards.querySelector('.popup__input_type_description');
 export const popupImage = document.querySelector('.popup_type_image');
 
 //массив карточек
@@ -64,11 +61,9 @@ const settings = {
   errorClass: 'popup__error_visible'
 }
 
-//валидируем 
+//переменные валидаций 
 const changeInform= new FormValidator(settings, popupProfile);
 const addCardForm = new FormValidator(settings, popupCards);
-addCardForm.enableValidation();
-changeInform.enableValidation();
 
 //фотопопап
 const popupImageOpen = new PopupWithImage('.popup_type_image');
@@ -84,21 +79,12 @@ const cardsList = new Section({
 
 cardsList.renderItems(); // перебираем массив
 
-//создание новой карточки
-function newCardMaker(data, undefined, cardsList){
-  const newCard = new Card(data, '.card-template', 
-    {handleCardClick: () => popupImageOpen.open(data.link, data.name)});
-    const cardsElement = newCard.generateCard();
-    cardsList.addItem(cardsElement);
-}
-
 //попап добавления карточки
 const popupCardsAdd = new PopupWithForm('.popup_type_cards', {
   handleFormSubmit: (data) => {
     newCardMaker({name: data.nameplace, link: data.photolink}, '.card-template', cardsList);
   }
 });
-
 
 //данные профиля
 const user = new UserInfo({nameInputSelector: '.profile__name', jobInputSelector: '.profile__job'});
@@ -110,6 +96,18 @@ const popupProfileChange = new PopupWithForm('.popup_type_profile', {
     user.setUserInfo(data.kusto, data.discover);
   }
 })
+
+//создание новой карточки
+function newCardMaker(data, undefined, cardsList){
+  const newCard = new Card(data, '.card-template', 
+    {handleCardClick: () => popupImageOpen.open(data.link, data.name)});
+    const cardsElement = newCard.generateCard();
+    cardsList.addItem(cardsElement);
+}
+
+//валидация
+addCardForm.enableValidation();
+changeInform.enableValidation();
 
 //слушатели
 popupProfileChange.setEventListeners(); //слушатель на попап изменения профиля
