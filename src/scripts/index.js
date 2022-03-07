@@ -6,6 +6,9 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
+//подкллючаем css
+import '../pages/index.css';
+
 //переменные
 const popupProfile = document.querySelector('.popup_type_profile')
 const popupContainerProfile = popupProfile.querySelector('.popup__container');

@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css" type="text/css">
   <title>Mesto Russia</title>
 </head>
 <body class="page">
   <div class="page-container">
     <header class="header">
-      <img class="header__logo" src="./blocks/header/__logo/logo.svg" alt="логотип сайта">
+      <img class="header__logo" src="<%=require('./blocks/header/__logo/logo.svg')%>" alt="логотип сайта">
     </header>
 
     <main class="content">
@@ -25,12 +24,12 @@
             </div>
 
             <button class="profile__change" type="button">
-              <img class="profile__button-edit" src="./blocks/profile/__button-edit/pencel.svg" alt="карандаш">
+              <img class="profile__button-edit" src="<%=require('./blocks/profile/__button-edit/pencel.svg')%>" alt="карандаш">
             </button>
           </div>
         </div>          
         <button class="profile__add" type="button">
-          <img class="profile__button-add" src="./blocks/profile/__button-add/Vector.svg" alt="логотип кнопки добавления файла">
+          <img class="profile__button-add" src="<%=require('./blocks/profile/__button-add/Vector.svg')%>" alt="логотип кнопки добавления файла">
         </button>
       </section>
       
@@ -100,6 +99,5 @@
     </section>
   </div>
 
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
