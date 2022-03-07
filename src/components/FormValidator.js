@@ -61,8 +61,6 @@ class FormValidator {
 
   //слушатели
   _setEventListeners() { 
-    this._inputs = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
-    this._button = this._form.querySelector(this._settings.submitButtonSelector);
 
     this._inputs.forEach(input => {
       input.addEventListener('input', () => {
@@ -75,8 +73,8 @@ class FormValidator {
 
    //отключаем кнопку отправки формы добавления карточки
   resetValidation() {
-    this._form.querySelector(this._settings.submitButtonSelector).setAttribute('disabled', true);
-    this._form.querySelector(this._settings.submitButtonSelector).classList.add(this._settings.inactiveButtonClass)
+    this._button.setAttribute('disabled', true);
+    this._button.classList.add(this._settings.inactiveButtonClass)
   }
   
    //включение валидации

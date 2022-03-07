@@ -3,13 +3,13 @@ class Section {
     this._initialCards = items;
     this._renderer = renderer; //функция-колбек
 
-    this._containerSelector = containerSelector;
+    this._containerSelector = document.querySelector(containerSelector);
   }
 
 
 //принимает параметр и вставляет его в разметку
   addItem(element){
-    this._containerSelector.append(element)
+    this._containerSelector.prepend(element)
   }
 
 //перебор массива

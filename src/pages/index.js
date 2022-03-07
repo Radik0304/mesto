@@ -20,7 +20,6 @@ export const profileJob = document.querySelector('.profile__job');
 const buttonProfilePopupOpen = document.querySelector('.profile__change');
 export const buttonPopupClose= document.querySelector('.popup__close');
 const cards = document.querySelector('.elements');
-const cardsTemplate = document.querySelector('.card-template').content;
 const popupCardsButtonOpenForm = document.querySelector('.profile__add');
 const popupCards = document.querySelector('.popup_type_cards');
 const placeNameInput = popupCards.querySelector('.popup__input_type_name');
@@ -72,39 +71,40 @@ addCardForm.enableValidation();
 changeInform.enableValidation();
 
 //фотопопап
-const popupImageOpen = new PopupWithImage(popupImage);
+const popupImageOpen = new PopupWithImage('.popup_type_image');
 
 //добавляем карточки на страницу
 const cardsList = new Section({
   items: initialCards,
   renderer: (data) => {
-      newCardMaker(data, cardsTemplate, cardsList)
+      newCardMaker(data, '.card-template', cardsList)
     }
   },
-  cards);
+  '.elements');
 
 cardsList.renderItems(); // перебираем массив
 
 //создание новой карточки
-function newCardMaker(data, cardsTemplate, cardsList){
-  const newCard = new Card(data, cardsTemplate, 
+function newCardMaker(data, undefined, cardsList){
+  const newCard = new Card(data, '.card-template', 
     {handleCardClick: () => popupImageOpen.open(data.link, data.name)});
     const cardsElement = newCard.generateCard();
-    cardsList.addItem(cardsElement)
+    cardsList.addItem(cardsElement);
 }
 
 //попап добавления карточки
-const popupCardsAdd = new PopupWithForm(popupCards, {
+const popupCardsAdd = new PopupWithForm('.popup_type_cards', {
   handleFormSubmit: (data) => {
-    newCardMaker({name: placeNameInput.value, link: placeLinkInput.value}, cardsTemplate, cardsList);
+    newCardMaker({name: data.nameplace, link: data.photolink}, '.card-template', cardsList);
   }
 });
 
+
 //данные профиля
-const user = new UserInfo({nameInputSelector: profileName, jobInputSelector: profileJob});
+const user = new UserInfo({nameInputSelector: '.profile__name', jobInputSelector: '.profile__job'});
 
 //попап изменения информации
-const popupProfileChange = new PopupWithForm(popupProfile, {
+const popupProfileChange = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
     popupProfileChange.close();
     user.setUserInfo(data.kusto, data.discover);

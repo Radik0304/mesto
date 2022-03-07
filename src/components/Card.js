@@ -1,12 +1,9 @@
-import PopupWithImage from './PopupWithImage.js';
-import {popupImage} from '../scripts/index.js';
-
 class Card{
   constructor(data, cardsTemplate, {handleCardClick}) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
-    this._cardsTemplate = cardsTemplate;
+    this._cardsTemplate = document.querySelector(cardsTemplate);
     this._handleCardClick = handleCardClick;
   }
 
@@ -35,16 +32,18 @@ class Card{
   }
 
   _likeCard() { //лайк карточки
-    this._card.querySelector('.elements__button-like').classList.toggle('elements__button-like_type_active')
+    this._buttonLike.classList.toggle('elements__button-like_type_active')
   }
 
   _setEventListeners() { //делаем функцию-обработчик
   
-    this._card.querySelector('.elements__button-delete').addEventListener('click', () => {
+    this._buttonLike = this._card.querySelector('.elements__button-like');
+    this._buttonDelete = this._card.querySelector('.elements__button-delete');
+    this._buttonDelete.addEventListener('click', () => {
       this._deleteCard()
     })
 
-    this._card.querySelector('.elements__button-like').addEventListener('click', () => {
+    this._buttonLike.addEventListener('click', () => {
       this._likeCard ()
     })
 
@@ -54,3 +53,6 @@ class Card{
 }
 
 export default Card;
+
+
+

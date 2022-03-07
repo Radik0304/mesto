@@ -1,7 +1,7 @@
 class UserInfo {
   constructor({nameInputSelector, jobInputSelector}) {
-    this._nameInputSelector = nameInputSelector;
-    this._jobInputSelector = jobInputSelector;
+    this._nameInputSelector = document.querySelector(nameInputSelector);
+    this._jobInputSelector = document.querySelector(jobInputSelector);
   }
 
   getUserInfo(){ //возращает объект с данными пользователя
