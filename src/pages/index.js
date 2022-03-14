@@ -11,19 +11,20 @@ let userId
 
 api.getProfile()
 .then(res => {
-  console.log(res)
+  // console.log(res)
   user.setUserInfo(res.name, res.about)
 
   userId = res._id;
 });
 
+//забираем карточки с сервера
 api.getInitialCards()
 .then(section => {
-  console.log('section', section);
+  // console.log('section', section);
   section.forEach(data => {
+    // console.log(data._id)
     newCardMaker(data, undefined, cardsList);
-
-    cardsList.renderItems(); // перебираем массив
+    // cardsList.renderItems(); // перебираем массив
   })
 })
 
@@ -111,13 +112,8 @@ const popupCardsAdd = new PopupWithForm('.popup_type_cards', {
   
   api.addNewCard(data.nameplace, data.photolink)
   .then(res => {
-    console.log('res', res)
-    newCardMaker({name: res.name, 
-      link: res.link, 
-      likes: res.likes, 
-      id: res._id, 
-      userId,
-      owner: res.owner._id},
+    // console.log(res._id)
+    newCardMaker(res,
        '.card-template', cardsList);
    })
   }
@@ -130,7 +126,7 @@ const user = new UserInfo({nameInputSelector: '.profile__name', jobInputSelector
 const popupProfileChange = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
     api.editProfile(data.kusto, data.discover)
-    .then(res => {
+    .then(res => { 
       console.log('res', res);
       user.setUserInfo(data.kusto, data.discover);
     });
@@ -147,9 +143,10 @@ const popupAvatarChange = new PopupWithForm('.popup_type_avatar', {
 });
 
 //попап подтверждения удаления
-const popupConfirmationDelete = new PopupWithForm('.popup_type_confirmation' , {
+const popupConfirmationDelete = new PopupWithForm('.popup_type_confirmation', 
+{
   handleFormSubmit: () => {
-    api.deleteCard(id);
+    // api.deleteCard(id);
   }
 });
 
@@ -158,13 +155,15 @@ function newCardMaker(data, undefined, cardsList){
   const newCard = new Card(
     data, 
     '.card-template', 
-    {handleCardClick: () => popupImageOpen.open(data.link, data.name, data._id)}, //data.likes, data._id, userId, data.owner._i
+    {handleCardClick: () => popupImageOpen.open(data.link, data.name)},
     (id) => {
-      console.log('id', id)
-      popupConfirmationDelete.open()
+      console.log("id",id)
+      popupConfirmationDelete.open();
       popupConfirmationDelete.changeSubmitHandler(() => {
+        console.log(id)
         api.deleteCard(id)
           .then(res => {
+            console.log('res', res)
             newCard.deleteCard();
             popupConfirmationDelete.close()
           })
@@ -178,7 +177,6 @@ function newCardMaker(data, undefined, cardsList){
     }
     );
 
-    
     const cardsElement = newCard.generateCard();
     cardsList.addItem(cardsElement);
 

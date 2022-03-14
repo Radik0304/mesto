@@ -4,13 +4,14 @@ class Card{
     this._link = data.link;
     this._alt = data.name;
     this._likes = data.likes;
-    this._id = data.id;
+    this._id = data._id;
     this._userId = data.userId;
     this._ownerId = data.ownerId;
     this._cardsTemplate = document.querySelector(cardsTemplate);
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikeClick = handleLikeClick;
+    console.log(data)
   }
 
   _getTemplate() { //генерируем разметку
@@ -59,6 +60,7 @@ class Card{
     this._buttonDelete = this._card.querySelector('.elements__button-delete');
     
     this._buttonDelete.addEventListener('click', () => {
+      // console.log('button on')
       this._handleDeleteClick(this._id)
     })
 
