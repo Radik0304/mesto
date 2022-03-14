@@ -1,0 +1,9 @@
+.elements__button-like-number{
+  font-family: 'inter', 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  align-items: center;
+  padding: 0;
+  margin: 3px 0 0 0;
+}

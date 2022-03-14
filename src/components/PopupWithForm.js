@@ -22,6 +22,10 @@ class PopupWithForm extends Popup{
       return this._formValues
     }
 
+    changeSubmitHandler(newhandleFormSubmit){
+      this._handleFormSubmit = newhandleFormSubmit
+    }
+
     close() {
       super.close();
       this._form.reset()

@@ -9,7 +9,7 @@ class Section {
 
 //принимает параметр и вставляет его в разметку
   addItem(element){
-    this._containerSelector.prepend(element)
+    this._containerSelector.prepend(element) 
   }
 
 //перебор массива
