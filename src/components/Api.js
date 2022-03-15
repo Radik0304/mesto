@@ -1,9 +1,11 @@
+import {renderLoading} from '../pages/index.js'
+
 class Api {
     constructor({baseUrl, headers}) {
       this._headers = headers;
       this._baseUrl = baseUrl;
     }
-  
+
     getProfile(){ //получение данных профиля
       return fetch(`${this._baseUrl}/users/me`, {
         headers: this._headers
@@ -12,7 +14,6 @@ class Api {
       .catch(console.log)
     }
     
-
     getInitialCards() { //получение карточек
       return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers
@@ -32,6 +33,9 @@ class Api {
       })
       .then(res => res.ok ? res.json(): Promise.reject(res.status))
       .catch(console.log)
+      .finally(() =>{
+        renderLoading(false)
+      })
     }
   
     addNewCard(name, link) { //добавление новой карточки
@@ -45,6 +49,9 @@ class Api {
       })
       .then(res => res.ok ? res.json(): Promise.reject(res.status))
       .catch(console.log)
+      .finally(() =>{
+        renderLoading(false)
+      })
     }
 
     deleteCard(id) { //удаление карточки
@@ -74,7 +81,7 @@ class Api {
       .catch(console.log)
     }
 
-    changeAvatar(avatar) { //редактирование профиля
+    changeAvatar(avatar) { //редактирование аватара
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",
         headers: this._headers,
@@ -82,6 +89,9 @@ class Api {
       })
       .then(res => res.ok ? res.json(): Promise.reject(res.status))
       .catch(console.log)
+      .finally(() =>{
+        renderLoading(false)
+      })
     }
   }
   

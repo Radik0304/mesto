@@ -11,11 +11,12 @@ let userId
 
 api.getProfile()
 .then(res => {
-  console.log(res._id);
-  user.setUserInfo(res.name, res.about)
+  // console.log(res._id);
+  user.setUserInfo(res.name, res.about, res.avatar)
 
   userId = res._id;
 });
+
 
 //забираем карточки с сервера
 api.getInitialCards()
@@ -42,40 +43,39 @@ const popupCardsButtonOpenForm = document.querySelector('.profile__add');
 const popupCards = document.querySelector('.popup_type_cards');
 export const popupImage = document.querySelector('.popup_type_image');
 const popupAvatarButtonOpen = document.querySelector('.avatar');
-// bn =65
 const popupAvatar = document.querySelector('.popup_type_avatar');
 
 
 //массив карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+// const initialCards = [
+//   {
+//     name: 'Архыз',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+//   },
+//   {
+//     name: 'Челябинская область',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+//   },
+//   {
+//     name: 'Иваново',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//   },
+//   {
+//     name: 'Камчатка',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+//   },
+//   {
+//     name: 'Холмогорский район',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+//   },
+//   {
+//     name: 'Байкал',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//   }
+// ];
 
 //массив валдации
-const settings = {
+export const settings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__form-save',
@@ -88,6 +88,19 @@ const settings = {
 const changeInform= new FormValidator(settings, popupProfile);
 const addCardForm = new FormValidator(settings, popupCards);
 const changeAvatar = new FormValidator(settings, popupAvatar);
+
+//уведомление о процессе загрузки
+export function renderLoading(loading) {
+  if (loading) {
+      Array.from(document.querySelectorAll('.popup__form-save')).forEach((submit) => {
+          submit.textContent = "Сохранение...";
+      })
+  } else {
+      Array.from(document.querySelectorAll('.popup__form-save')).forEach((submit) => {
+          submit.textContent = "Сохранить";
+      })
+  }
+}
 
 //фотопопап
 const popupImageOpen = new PopupWithImage('.popup_type_image');
@@ -104,40 +117,43 @@ const cardsList = new Section({
 //попап добавления карточки
 const popupCardsAdd = new PopupWithForm('.popup_type_cards', {
   handleFormSubmit: (data) => {
+    renderLoading(true);
   api.addNewCard(data.nameplace, data.photolink)
   .then(res => {
-    newCardMaker(res,
-       '.card-template', cardsList);
-   })
+    newCardMaker(res,'.card-template', cardsList);
+   });
   }
 });
 
 //данные профиля
-const user = new UserInfo({nameInputSelector: '.profile__name', jobInputSelector: '.profile__job', avatarSelector: 'profile__avatar'});
+const user = new UserInfo({nameInputSelector: '.profile__name', 
+jobInputSelector: '.profile__job', 
+avatarSelector: '.profile__avatar'});
 
 //попап изменения информации
 const popupProfileChange = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
+    // console.log(data)
+    renderLoading(true);
     api.editProfile(data.kusto, data.discover)
     .then(res => { 
-      console.log('res', res);
-      user.setUserInfo(data.kusto, data.discover);
+      // console.log('res', res);
+      user.setUserInfo(res.name, res.about,res.avatar);
+      console.log(res)
     });
-
     popupProfileChange.close();
   }
 })
 
 //попап аватара
 const popupAvatarChange = new PopupWithForm('.popup_type_avatar', {
-  handleFormSubmit: () => {
-    api.changeAvatar()
+  handleFormSubmit: (data) => {
+    renderLoading(true);
+    api.changeAvatar(data)
     .then(res => {
-      console.log(res)
-      // user.setUserInfo(res.name, res.about, res.avatar);
+      user.setUserInfo(res.name, res.about, res.avatar)
       popupAvatarChange.close()
     })
-
   }
 });
 
@@ -145,9 +161,12 @@ const popupAvatarChange = new PopupWithForm('.popup_type_avatar', {
 const popupConfirmationDelete = new PopupWithForm('.popup_type_confirmation', 
 {
   handleFormSubmit: () => {
-    // api.deleteCard(id);
   }
 });
+
+
+
+
 
 //создание новой карточки
 function newCardMaker(data, undefined, cardsList){
@@ -165,13 +184,14 @@ function newCardMaker(data, undefined, cardsList){
     (id) => {
       popupConfirmationDelete.open();
       popupConfirmationDelete.changeSubmitHandler(() => {
-        console.log(id)
+        console.log(id);
         api.deleteCard(id)
           .then(res => { 
             console.log('res', res)
             newCard.deleteCard();
             popupConfirmationDelete.close()
           })
+
       })
     }, 
     (id) => {

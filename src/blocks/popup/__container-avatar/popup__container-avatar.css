@@ -1,7 +1,7 @@
 .popup__container-avatar {
     background-color: #fff;
     min-width: 430px;
-    height: 272px;
+    min-height: 272px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     display: flex;
@@ -12,7 +12,7 @@
   }
   
   @media screen and (max-width: 900px) {
-    .popup__container {
+    .popup__container-avatar {
       min-width: 282px;
       min-height: 322px;
     }

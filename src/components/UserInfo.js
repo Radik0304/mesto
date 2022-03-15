@@ -1,21 +1,21 @@
 class UserInfo {
   constructor({nameInputSelector, jobInputSelector, avatarSelector}) {
-    this._nameInputSelector = document.querySelector(nameInputSelector);
-    this._jobInputSelector = document.querySelector(jobInputSelector);
-    this._avatarSelector = document.querySelector(avatarSelector);
+    this._name = document.querySelector(nameInputSelector);
+    this._job = document.querySelector(jobInputSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo(){ //возращает объект с данными пользователя
     return {
-      name: this._nameInputSelector.textContent,
-      about: this._jobInputSelector.textContent
+      name: this._name.textContent,
+      about: this._job.textContent,
     }
-    
   }
 
-  setUserInfo(name, about){ //принимает новые данные и добавляет их на страницу
-    this._nameInputSelector.textContent = name;
-    this._jobInputSelector.textContent = about;
+  setUserInfo(name, about, avatar){ //принимает новые данные и добавляет их на страницу
+    this._name.textContent = name;
+    this._job.textContent = about;
+    this._avatar.style.backgroundImage = `url(${avatar})`;
     }
   }
 

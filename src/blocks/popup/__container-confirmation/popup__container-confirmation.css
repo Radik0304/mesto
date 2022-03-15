@@ -1,7 +1,7 @@
 .popup__container-confirmation {
     background-color: #fff;
     min-width: 430px;
-    min-height: 181px;
+    max-height: 181px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     display: flex;
@@ -10,10 +10,10 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   @media screen and (max-width: 900px) {
-    .popup__container {
+    .popup__container-confirmation {
       min-width: 282px;
-      min-height: 322px;
+      max-height: 322px;
     }
   } 

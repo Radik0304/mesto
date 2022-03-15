@@ -62,7 +62,6 @@ _removeLikeCard(){ //удаляем лайк
     this.setLikes(this._likes);
 
     if(this._ownerId !== this._userId){
-      // console.log('display none')
       this._card.querySelector('.elements__button-delete').style.display = 'none'
     }
 
