@@ -5,11 +5,12 @@ class PopupWithForm extends Popup{
       super(popupSelector);
       this._handleFormSubmit = handleFormSubmit;
       this._form = this._popupSelector.querySelector('.popup__form');
+      this._inputs =  this._form.querySelectorAll('.popup__input');
+      this._buttonsSave =  this._form.querySelectorAll('.popup__form-save');
     }
 
     //собираем данные всех полей формы
     _getInputValues(){
-      this._inputs =  this._form.querySelectorAll('.popup__input');
     //создаем пустой объект
     this._formValues = {}
 
@@ -29,6 +30,18 @@ class PopupWithForm extends Popup{
     close() {
       super.close();
       this._form.reset()
+    }
+
+    renderLoading(loading) {
+      if (loading) {
+          Array.from(this._buttonsSave).forEach((submit) => {
+              submit.textContent = "Сохранение...";
+          })
+      } else {
+          Array.from(this._buttonsSave).forEach((submit) => {
+              submit.textContent = "Сохранить";
+          })
+      }
     }
 
     setEventListeners() {

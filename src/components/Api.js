@@ -6,20 +6,25 @@ class Api {
       this._baseUrl = baseUrl;
     }
 
+    _checkResponse(res){ //проверка ответа от сервера
+      if(res.ok){
+        return res.json();
+      }
+      return Promise.reject(res.status)
+    }
+
     getProfile(){ //получение данных профиля
       return fetch(`${this._baseUrl}/users/me`, {
         headers: this._headers
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
+      .then(this._checkResponse)
     }
     
     getInitialCards() { //получение карточек
       return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
+      .then(this._checkResponse)
     }
 
     editProfile(name, about) { //редактирование профиля
@@ -31,11 +36,7 @@ class Api {
           about
         })
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
-      .finally(() =>{
-        renderLoading(false)
-      })
+      .then(this._checkResponse)
     }
   
     addNewCard(name, link) { //добавление новой карточки
@@ -47,11 +48,7 @@ class Api {
           link
         })
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
-      .finally(() =>{
-        renderLoading(false)
-      })
+      .then(this._checkResponse)
     }
 
     deleteCard(id) { //удаление карточки
@@ -59,8 +56,7 @@ class Api {
         method: "DELETE",
         headers: this._headers
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
+      .then(this._checkResponse)
     }
 
     putLike(id) { //постановка лайка
@@ -68,8 +64,7 @@ class Api {
         method: "PUT",
         headers: this._headers
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
+      .then(this._checkResponse)
     }
 
     deleteLike(id) { //удаление лайка
@@ -77,8 +72,7 @@ class Api {
         method: "DELETE",
         headers: this._headers
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
+      .then(this._checkResponse)
     }
 
     changeAvatar(avatar) { //редактирование аватара
@@ -87,11 +81,7 @@ class Api {
         headers: this._headers,
         body: JSON.stringify(avatar)
       })
-      .then(res => res.ok ? res.json(): Promise.reject(res.status))
-      .catch(console.log)
-      .finally(() =>{
-        renderLoading(false)
-      })
+      .then(this._checkResponse)
     }
   }
   
